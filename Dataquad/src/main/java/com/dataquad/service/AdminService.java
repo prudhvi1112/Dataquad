@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataLocationNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dataquad.dao.AdminDao;
@@ -33,7 +34,7 @@ public class AdminService implements AdminserviceInterface {
 	public ExcelDataDao excelDataDao;
 
 	@Override
-	
+	@Transactional
 	public AdminDto createAdmin(AdminDto adminDto) {
 
 		AdminModel admin = mapper.map(adminDto, AdminModel.class);
@@ -48,6 +49,7 @@ public class AdminService implements AdminserviceInterface {
 	}
 
 	@Override
+	@Transactional
 	public AdminDto loginAdmin(String username, String password) {
 		AdminModel adminModel = adminDao.findById(username)
 				.orElseThrow(() -> new AdminNotFoundException("No Details Found"));

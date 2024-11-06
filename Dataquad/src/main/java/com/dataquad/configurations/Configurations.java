@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Configurations 
 {
+	// new branchgit
 	   @Bean
 	    public ModelMapper modelMapper() {
 	        return new ModelMapper();
